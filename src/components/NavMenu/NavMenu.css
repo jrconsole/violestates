@@ -1,0 +1,73 @@
+#hamburger {
+    height: 50%;
+    width: auto;
+    position: absolute;
+    right: 10px;
+}
+
+.menu {
+    position: fixed;
+    top: 30px;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    display: none;
+    justify-content: center;
+}
+
+.active {
+    display: flex;
+}
+
+.menu a {
+    color:navy;
+    z-index: 2;
+    font-size: 20px;
+    display: block;
+    line-height: 3rem;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    background: rgba(0, 0, 0, 0.2)
+
+  }
+
+.menubox {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0px;
+    opacity: 0.9;
+    background-color:white;
+    z-index: 1;
+}
+
+#navMenu {
+    opacity: .9;
+    background-color: white;
+}
+
+ul {
+    width: auto;
+    min-width: 370px;
+    padding: 10px 0 0 0;
+    display: flex;
+    flex-flow: column;
+    margin: 0 auto;
+    position: absolute;
+    align-items: center;
+    list-style: none;
+    z-index: 2;
+}
+
+li {
+    width: 50%;
+    height: 3rem;
+    z-index: 2;
+    border-bottom: solid 1px navy;
+}
+
+.lastNav {
+    border-bottom: none;
+}
