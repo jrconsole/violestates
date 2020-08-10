@@ -47,15 +47,15 @@ class App extends React.Component {
             <h4>Rent an affordable home in Dayton or Portsmouth</h4>
           </div>
           <div className="button">
-              <a href="./properties.html">Properties</a>
+              <a href="#Portfolio">Properties</a>
           </div>
         </header>
         <PropertyList properties={this.state.properties} />
         <div class="button">
-            <a href="./properties.html">Properties</a>
+            <a href="#Portfolio">Properties</a>
         </div>
         <div class="button" id="addPropButton">
-            <a onClick={this.displayForm} href="#">Add Property</a>
+            <a onClick={this.displayForm} href="#Portfolio">Add Property</a>
         </div>
         <PropForm addProperty={this.addProperty} closeForm={this.displayForm} displayForm={this.state.displayForm} />
       </div>

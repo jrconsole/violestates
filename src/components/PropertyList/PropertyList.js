@@ -6,7 +6,7 @@ class PropertyList extends React.Component{
 
   render() {
     return (
-      <div className="Portfolio">
+      <div className="Portfolio" id="Portfolio">
         {this.props.properties.map(property => {
           return <Property property={property} />
         })} 
