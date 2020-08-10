@@ -3,9 +3,6 @@ import './ImageSlider.css';
 import SimpleImageSlider from 'react-simple-image-slider';
 
 class ImageSlider extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
 
     render() {

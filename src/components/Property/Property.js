@@ -21,26 +21,23 @@ const property = {
 }
 
 class Property extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
 
   render() {
     return( 
-      <div id={property.uniqueId} className = "property">
+      <div id={this.props.property.uniqueId} className = "property">
           <ImageSlider images={property.images} />
           <div className="propInfo">
-              <span>${property.rent}/mo</span>
-              <span>{property.numBed}Bed/{property.numBath}Bath</span>
+              <span>${this.props.property.price}/mo</span>
+              <span>{this.props.property.numBed}Bed/{this.props.property.numBath}Bath</span>
           </div>
           <div className="propTitle">
-              <h4>{property.name}</h4>
-              <span>{property.address} {property.city}</span>
+              <h4>{this.props.property.name}</h4>
+              <span>{this.props.property.address} {this.props.property.city}</span>
           </div>
           <div className="button">
-              <a href={`./property${property.uniqueId}.html`}>View Property</a>
+              <a href={`./property${this.props.property.uniqueId}.html`}>View Property</a>
           </div>
+          <h6>{this.props.property.id}</h6>
       </div>
     )
   }

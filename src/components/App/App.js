@@ -20,6 +20,7 @@ class App extends React.Component {
      }
 
     this.displayForm = this.displayForm.bind(this);
+    this.addProperty = this.addProperty.bind(this);
   }
 
   displayForm() {
@@ -31,7 +32,7 @@ class App extends React.Component {
   }
 
   addProperty(newProp) {
-    const newList = [this.state.properties, newProp];
+    const newList = this.state.properties.concat(newProp);
     this.setState({ properties: newList});
   }
 
@@ -56,7 +57,7 @@ class App extends React.Component {
         <div class="button" id="addPropButton">
             <a onClick={this.displayForm} href="#">Add Property</a>
         </div>
-        <PropForm closeForm={this.displayForm} displayForm={this.state.displayForm} />
+        <PropForm addProperty={this.addProperty} closeForm={this.displayForm} displayForm={this.state.displayForm} />
       </div>
     );
   }

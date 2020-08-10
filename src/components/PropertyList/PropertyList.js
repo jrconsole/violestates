@@ -3,20 +3,13 @@ import './PropertyList.css';
 import Property from '../Property/Property'
 
 class PropertyList extends React.Component{
-  constructor(props) {
-    super(props);
-
-  }
 
   render() {
     return (
       <div className="Portfolio">
-        <Property />
-        <Property />
-        <Property />
-        <Property />
-        <Property />
-        <Property />
+        {this.props.properties.map(property => {
+          return <Property property={property} />
+        })} 
       </div>
     )
   }

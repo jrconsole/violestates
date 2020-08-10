@@ -2,9 +2,6 @@ import React from 'react';
 import './NavMenu.css';
 
 export class NavMenu extends React.Component {
-    constructor(props) {
-        super(props);
-      }
 
     render() {
         return (

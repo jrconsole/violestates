@@ -25,9 +25,15 @@ class NavBar extends React.Component {
             <div>
                 <nav>
                     <a className = 'logo' id='logo' href="./index.html">ViolEstates</a>
-                    <img onClick={this.handleClick} src={require("../../images/hamburger-navy.png")} id="hamburger"/>
+                    <img 
+                        onClick={this.handleClick} 
+                        src={require("../../images/hamburger-navy.png")} 
+                        id="hamburger" 
+                        alt="Menu"/>
                 </nav>
-                <NavMenu onClick={this.handleClick} displayMenu={this.state.displayMenu}/>
+                <NavMenu 
+                    onClick={this.handleClick} 
+                    displayMenu={this.state.displayMenu}/>
             </div>
         )
     }
