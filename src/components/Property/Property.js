@@ -24,7 +24,7 @@ class Property extends React.Component {
 
   render() {
     return( 
-      <div id={this.props.property.uniqueId} className = "property">
+      <div id={this.props.property.id} className = "property">
           <ImageSlider images={property.images} />
           <div className="propInfo">
               <span>${this.props.property.price}/mo</span>
@@ -35,7 +35,7 @@ class Property extends React.Component {
               <span>{this.props.property.address} {this.props.property.city}</span>
           </div>
           <div className="button">
-              <a href={`./property${this.props.property.uniqueId}.html`}>View Property</a>
+              <a href={`./property${this.props.property.id}.html`}>View Property</a>
           </div>
           <h6>{this.props.property.id}</h6>
       </div>

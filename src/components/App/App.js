@@ -51,10 +51,10 @@ class App extends React.Component {
           </div>
         </header>
         <PropertyList properties={this.state.properties} />
-        <div class="button">
+        <div className="button">
             <a href="#Portfolio">Properties</a>
         </div>
-        <div class="button" id="addPropButton">
+        <div className="button" id="addPropButton">
             <a onClick={this.displayForm} href="#Portfolio">Add Property</a>
         </div>
         <PropForm addProperty={this.addProperty} closeForm={this.displayForm} displayForm={this.state.displayForm} />
