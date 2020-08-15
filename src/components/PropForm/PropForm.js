@@ -1,5 +1,6 @@
 import React from 'react';
 import './PropForm.css';
+import PropInput from '../PropInput/PropInput';
 
 class PropForm extends React.Component {
     constructor(props) {
@@ -49,6 +50,16 @@ class PropForm extends React.Component {
                 <form id='addPropForm' onSubmit={this.handleSubmit}>
                     <h2>Create a Property</h2>
                     
+                    {/*
+                    {Object.keys(this.state.newProperty).map(key => {
+                        return (
+                            <PropInput 
+                                inputName={key} 
+                                inputValue={this.state.newProperty[key]} 
+                                onChange={this.handleChange} />
+                        ); 
+                    })}*/}
+                 
                     <label for="price">Monthly Rent:</label>
                     <input 
                         type="text" 
@@ -94,15 +105,16 @@ class PropForm extends React.Component {
                         onChange={this.handleChange}></input>
                     <br></br>
                     
+                    {/*<PropInput inputName="city" inputValue={this.state.newProperty.city} onChange={this.handleChange} /> */}
                     <label for="city">City:</label>
                     <input 
                         type="text" 
                         id="city" 
                         name="city"
                         value={this.state.newProperty.city}
-                        onChange={this.handleChange}></input>       
-                    
-                    <input type="submit" value="Add Property" class="button" id="submitProp"></input>
+                        onChange={this.handleChange}></input>
+                                                
+                    <input type="submit" value="Add Property" className="button" id="submitProp"></input>
                 </form>
                 <div onClick={this.props.closeForm} className='formbox' id='formbox'></div>
             </div>
