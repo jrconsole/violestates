@@ -49,7 +49,7 @@ class PropForm extends React.Component {
                 <form id='addPropForm' onSubmit={this.handleSubmit}>
                     <h2>Create a Property</h2>
                     
-                    <label for="price">Monthly Rent:</label>
+                    <label htmlFor="price">Monthly Rent:</label>
                     <input 
                         type="text" 
                         id="price" 
@@ -58,7 +58,7 @@ class PropForm extends React.Component {
                         onChange={this.handleChange}></input>
                     <br></br>
                     
-                    <label for="numBed">Number of Bedrooms:</label>
+                    <label htmlFor="numBed">Number of Bedrooms:</label>
                     <input 
                         type="text" 
                         id="numBed" 
@@ -67,7 +67,7 @@ class PropForm extends React.Component {
                         onChange={this.handleChange}></input>
                     <br></br>
                     
-                    <label for="numBath">Number of Bathrooms:</label>
+                    <label htmlFor="numBath">Number of Bathrooms:</label>
                     <input 
                         type="text" 
                         id="numBath" 
@@ -76,7 +76,7 @@ class PropForm extends React.Component {
                         onChange={this.handleChange}></input>
                     <br></br>
                     
-                    <label for="name">Property Name:</label>
+                    <label htmlFor="name">Property Name:</label>
                     <input 
                         type="text" 
                         id="name" 
@@ -85,7 +85,7 @@ class PropForm extends React.Component {
                         onChange={this.handleChange}></input>
                     <br></br>
                     
-                    <label for="address">Address:</label>
+                    <label htmlFor="address">Address:</label>
                     <input 
                         type="text" 
                         id="address" 
@@ -94,7 +94,7 @@ class PropForm extends React.Component {
                         onChange={this.handleChange}></input>
                     <br></br>
                     
-                    <label for="city">City:</label>
+                    <label htmlFor="city">City:</label>
                     <input 
                         type="text" 
                         id="city" 
@@ -102,7 +102,7 @@ class PropForm extends React.Component {
                         value={this.state.newProperty.city}
                         onChange={this.handleChange}></input>       
                     
-                    <input type="submit" value="Add Property" class="button" id="submitProp"></input>
+                    <input type="submit" value="Add Property" className="button" id="submitProp"></input>
                 </form>
                 <div onClick={this.props.closeForm} className='formbox' id='formbox'></div>
             </div>
