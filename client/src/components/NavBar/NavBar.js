@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './NavBar.css';
 import { NavMenu } from '../NavMenu/NavMenu'
 
@@ -24,7 +25,7 @@ class NavBar extends React.Component {
         return (
             <div>
                 <nav>
-                    <a className = 'logo' id='logo' href="./index.html">ViolEstates</a>
+                    <Link className = 'logo' id='logo' to="/">ViolEstates</Link>
                     <img 
                         onClick={this.handleClick} 
                         src={require("../../images/hamburger-navy.png")} 

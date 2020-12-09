@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css';
+import { Link } from 'react-router-dom';
+import './Home.css';
 import ImageSlider from '../ImageSlider/ImageSlider';
 import PropertyList from '../PropertyList/PropertyList';
 import NavBar from '../NavBar/NavBar';
@@ -20,7 +21,6 @@ class App extends React.Component {
      }
 
     this.displayForm = this.displayForm.bind(this);
-    this.addProperty = this.addProperty.bind(this);
   }
 
   displayForm() {
@@ -29,11 +29,6 @@ class App extends React.Component {
     } else {
       this.setState({ displayForm: 'active' });
     }
-  }
-
-  addProperty(newProp) {
-    const newList = this.state.properties.concat(newProp);
-    this.setState({ properties: newList});
   }
 
   render() {
@@ -47,17 +42,17 @@ class App extends React.Component {
             <h4>Rent an affordable home in Dayton or Portsmouth</h4>
           </div>
           <div className="button">
-              <a href="#Portfolio">Properties</a>
+              <Link to="/properties">Properties</Link>
           </div>
         </header>
-        <PropertyList properties={this.state.properties} />
+        <PropertyList properties={this.props.properties} />
         <div className="button">
             <a href="#Portfolio">Properties</a>
         </div>
         <div className="button" id="addPropButton">
             <a onClick={this.displayForm} href="#Portfolio">Add Property</a>
         </div>
-        <PropForm addProperty={this.addProperty} closeForm={this.displayForm} displayForm={this.state.displayForm} />
+        <PropForm addProperty={this.props.addProperty} closeForm={this.displayForm} displayForm={this.state.displayForm} />
       </div>
     );
   }
