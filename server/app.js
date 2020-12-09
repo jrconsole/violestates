@@ -13,7 +13,30 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json()); // Recognize Request Objects as JSON objects
 app.use(express.static('build')); // serve static files (css & js) from the 'public' directory
 
+const properties = [
+    {
+        id: 1,
+        price: 1200,
+        numBed: 1,
+        numBath: 1,
+        name: "My First Apartment",
+        address: "123 Cool Ln.",
+        city: "AwesomeTown"
+    },
+    {
+        id: 2,
+        price: 2600,
+        numBed: 2,
+        numBath: 2,
+        name: "Our Apartment",
+        address: "456 Okay St.",
+        city: 'Yeahsville'
+    }
+];
 
+app.get('/properties', (req, res, next) => {
+    res.status(200).send({properties: properties});
+})
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port: ${PORT}`)
