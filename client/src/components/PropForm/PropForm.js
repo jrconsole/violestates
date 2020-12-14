@@ -31,16 +31,13 @@ class PropForm extends React.Component {
         });
     }
 
-    handleSubmit(e) {    
-        this.setState({ 
-            newProperty:
-                { id: (this.state.newProperty.id + 1) }
-        });
-
-        this.props.addProperty(this.state.newProperty)
+    async handleSubmit(e) {    
         e.preventDefault();
+        const newId = await this.props.addProperty(this.state.newProperty);
+        console.log('newId:', newId)
         this.props.closeForm();
         document.getElementById('addPropForm').reset();
+        window.location.href = `/properties/${newId}`;
     }
 
     render() {

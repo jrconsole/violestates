@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Property.css';
+import './PropertyView.css';
 import ImageSlider from '../ImageSlider/ImageSlider';
 import { useParams } from 'react-router-dom';
 
@@ -12,36 +12,57 @@ const property = {
   ]
 }
 
-class Property extends React.Component {
+class PropertyView extends React.Component {
 
   constructor(props){
     super(props);
 
     this.state = {
-      property: this.getProperty()
+      property: {id: null}
     }
   }
 
-  getProperty() {
-    let property;
-    if (this.props.property) {
-      property = this.props.property;
-    } else {
-    const { id } = this.props.params;
-    property = this.props.properties.find(property => {
-      return property.id === Number(id);
-    })
+  componentDidMount() {
+    this.getProperty();
   }
 
-    return property;
+  async getProperty() {
+    let property;
+    if (this.props.property) {
+      
+      property = this.props.property;
+    } else if (this.props.params && this.props.properties.length>0) {
+    
+      const { id } = this.props.params;
+    console.log(this.props.properties)
+    property = this.props.properties.find(property => {
+      return property.id === Number(id);
+    });
+    } else {
+      
+      const url = window.location.href;
+      let id;
+      for (let i=url.length+1; i>=0; i--) {
+        if (url[i] === '/') {
+          id = url.substring(i+1);
+          break;
+        }
+      }
+      const response  = await fetch(`http://localhost:5000/properties/${id}`);
+      const jsonResponse = await response.json();
+
+      property = jsonResponse.property;
+    }
+
+    this.setState({ property })
   } 
 
 
 
   render() {
     return( 
-      <div id={this.state.property.id} className = "property">
-          <ImageSlider height={300} images={property.images} />
+      <div id={this.state.property.id} className = "propView">
+          <ImageSlider height={550} images={property.images} />
           <div className="propInfo">
               <span>${this.state.property.price}/mo</span>
               <span>{this.state.property.numBed}Bed/{this.state.property.numBath}Bath</span>
@@ -51,7 +72,7 @@ class Property extends React.Component {
               <span>{this.state.property.address} {this.state.property.city}</span>
           </div>
           <div className="button">
-              <Link to={`/properties/${this.state.property.id}`}>View Property</Link>
+              <Link to={`/property/${this.state.property.id}`}>Apply</Link>
           </div>
           <h6>{this.state.property.id}</h6>
       </div>
@@ -60,7 +81,7 @@ class Property extends React.Component {
 }
 
 export default (props) => (
-  <Property
+  <PropertyView
       {...props}
       params={useParams()}
   />

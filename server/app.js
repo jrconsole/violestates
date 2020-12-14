@@ -34,8 +34,27 @@ const properties = [
     }
 ];
 
+let lastId = 2;
+
 app.get('/properties', (req, res, next) => {
     res.status(200).send({properties: properties});
+})
+
+app.get('/properties/:id', (req, res, next) => {
+    const id = req.params.id;
+
+    const property = properties.find(property => {
+        return property.id === Number(id);
+    })
+    res.status(200).send({ property });
+})
+
+app.post('/properties', (req, res, next) => {
+    const property = req.body.property;
+    property.id = lastId + 1;
+    properties.push(property);
+    lastId++;
+    res.status(201).send({ property: property })
 })
 
 app.listen(PORT, () => {

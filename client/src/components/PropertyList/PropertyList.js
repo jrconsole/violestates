@@ -8,7 +8,7 @@ class PropertyList extends React.Component{
     return (
       <div className="Portfolio" id="Portfolio">
         {this.props.properties.map(property => {
-          return <Property property={property} />
+          return <Property key={property.id} property={property} />
         })} 
       </div>
     )

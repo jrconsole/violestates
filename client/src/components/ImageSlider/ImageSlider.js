@@ -1,6 +1,6 @@
 import React from 'react';
 import './ImageSlider.css';
-import SimpleImageSlider from 'react-simple-image-slider';
+import SimpleImageSlider from '../../util/react-simple-image-slider';
 
 class ImageSlider extends React.Component {
 
@@ -9,7 +9,7 @@ class ImageSlider extends React.Component {
         return(
                 <SimpleImageSlider 
                     width={'100%'}
-                    height={300}
+                    height={this.props.height}
                     images={this.props.images}
                     style={{position: "relative"}}
                 />

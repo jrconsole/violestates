@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import PropertyList from '../PropertyList/PropertyList';
-import Property from '../Property/Property'
+import PropertyView from '../PropertyView/PropertyView'
 import NavBar from '../NavBar/NavBar';
 import Home from '../Home/Home';
 
@@ -22,9 +22,32 @@ class App extends React.Component {
     this.addProperty = this.addProperty.bind(this);
   }
 
-  addProperty(newProp) {
-    const newList = this.state.properties.concat(newProp);
-    this.setState({ properties: newList});
+  componentDidMount() {
+    this.refreshProperties();
+  }
+
+  async refreshProperties() {
+    const response = await fetch('http://localhost:5000/properties');
+    const jsonResponse = await response.json();
+
+    this.setState({ properties: jsonResponse.properties })
+  }
+
+  async addProperty(newProp) {
+    const response = await fetch('http://localhost:5000/properties', {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({ property: newProp }) // body data type must match "Content-Type" header
+    });
+    const jsonResponse = await response.json();
+    const newId = jsonResponse.property.id;
+  
+    this.refreshProperties();
+    console.log('jsonreceived:', jsonResponse);
+    return newId;
   }
 
   render() {
@@ -38,11 +61,11 @@ class App extends React.Component {
               <Route exact path="/">
                 <Home addProperty={this.addProperty} properties={this.state.properties} />
               </Route>
+              <Route path="/properties/:id">
+                <PropertyView properties={this.state.properties} />
+              </Route>
               <Route path="/properties">
                 <PropertyList properties={this.state.properties} />
-              </Route>
-              <Route path="/property/:id">
-                <Property properties={this.state.properties} />
               </Route>
             </Switch>
           </div>
