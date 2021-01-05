@@ -74,7 +74,7 @@ class ApplyForm extends React.Component {
                         onChange={this.handleChange}></input>
                     <br></br>          
                     
-                    <input type="submit" value="Add Property" className="button" id="submitProp"></input>
+                    <input type="submit" value="Submit" className="button" id="submitProp"></input>
                 </>
             )
         }
