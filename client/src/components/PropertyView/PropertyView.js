@@ -34,7 +34,7 @@ class PropertyView extends React.Component {
     } else if (this.props.params && this.props.properties.length>0) {
     
       const { id } = this.props.params;
-    console.log(this.props.properties)
+
     property = this.props.properties.find(property => {
       return property.id === Number(id);
     });
