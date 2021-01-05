@@ -9,11 +9,12 @@ class ApplyForm extends React.Component {
                 applicant: '',
                 income: '',
                 email: ''
-            }
+            },
+            submitted: false
         }
         
         this.handleChange = this.handleChange.bind(this);
-        //this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(e) {
@@ -27,18 +28,23 @@ class ApplyForm extends React.Component {
         });
     }
 
-    // async handleSubmit(e) {    
-    //     e.preventDefault();
-    //     const newId = await this.props.addProperty(this.state.newProperty);
-    //     this.props.closeForm();
-    //     document.getElementById('addPropForm').reset();
-    //     window.location.href = `/properties/${newId}`;
-    // }
+    async handleSubmit(e) {    
+        e.preventDefault();
+        this.setState({ submitted : true });
+        document.getElementById('addPropForm').reset();
+    }
 
-    render() {
-        return (
-            <div className = {`addProp .applyMenu`} id='applyMenu'>
-                <form id='addPropForm' onSubmit={this.handleSubmit}>
+    renderForm() {
+        if (this.state.submitted) {
+            return (
+                <>
+                    <h2>Thank you for applying!</h2>
+                    <button onClick={this.props.closeForm}>Close</button>
+                </>
+            )
+        } else {
+            return (
+                <>
                     <h2>Apply for this property</h2>
                     
                     <label htmlFor="applicant">Name:</label>
@@ -69,6 +75,16 @@ class ApplyForm extends React.Component {
                     <br></br>          
                     
                     <input type="submit" value="Add Property" className="button" id="submitProp"></input>
+                </>
+            )
+        }
+    }
+
+    render() {
+        return (
+            <div className = {`addProp .applyMenu`} id='applyMenu'>
+                <form id='addPropForm' onSubmit={this.handleSubmit}>
+                    {this.renderForm()}
                 </form>
                 <div onClick={this.props.closeForm} className='formbox' id='formbox'></div>
             </div>

@@ -22,6 +22,8 @@ class PropertyView extends React.Component {
       property: {id: null},
       displayForm: false
     }
+
+    this.displayApplyForm = this.displayApplyForm.bind(this);
   }
 
   componentDidMount() {
@@ -60,12 +62,16 @@ class PropertyView extends React.Component {
   } 
 
   displayApplyForm() {
-    this.setState({ displayForm: true });
+    if (!this.state.displayForm) {
+      this.setState({ displayForm: true });
+    } else {
+      this.setState({ displayForm: false })
+    }
   }
   
   renderApplyForm() {
     if (this.state.displayForm) {
-      return <ApplyForm />;
+      return <ApplyForm closeForm={this.displayApplyForm} />;
     }
   }
 
@@ -81,7 +87,7 @@ class PropertyView extends React.Component {
               <h4>{this.state.property.name}</h4>
               <span>{this.state.property.address} {this.state.property.city}</span>
           </div>
-          <button onClick={() => this.setState({ displayForm: true })}>Apply</button>
+          <button onClick={this.displayApplyForm} >Apply</button>
           <h6>{this.state.property.id}</h6>
           {this.renderApplyForm()}
       </div>
