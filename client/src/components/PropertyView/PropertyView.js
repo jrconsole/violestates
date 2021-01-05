@@ -65,7 +65,7 @@ class PropertyView extends React.Component {
           <ImageSlider height={550} images={property.images} />
           <div className="propInfo">
               <span>${this.state.property.price}/mo</span>
-              <span>{this.state.property.numBed}Bed/{this.state.property.numBath}Bath</span>
+              <span>{this.state.property.num_bed}Bed/{this.state.property.num_bath}Bath</span>
           </div>
           <div className="propTitle">
               <h4>{this.state.property.name}</h4>
