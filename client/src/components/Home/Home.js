@@ -41,10 +41,13 @@ class App extends React.Component {
             <h2>Ohio Homes</h2>
             <h4>Rent an affordable home in Dayton or Portsmouth</h4>
           </div>
-          <div className="button">
+        </header>
+        <div className="button">
               <Link to="/properties">Properties</Link>
           </div>
-        </header>
+          <div className="button" id="addPropButton">
+            <a onClick={this.displayForm} href="#Portfolio">Add Property</a>
+          </div>
         <PropertyList properties={this.props.properties} />
         <div className="button">
             <Link to="/properties">Properties</Link>
