@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './PropertyView.css';
 import ImageSlider from '../ImageSlider/ImageSlider';
 import { useParams } from 'react-router-dom';
+import ApplyForm from '../ApplyForm/ApplyForm';
 
 const property = {
   images: [
@@ -18,7 +19,8 @@ class PropertyView extends React.Component {
     super(props);
 
     this.state = {
-      property: {id: null}
+      property: {id: null},
+      displayForm: false
     }
   }
 
@@ -57,7 +59,15 @@ class PropertyView extends React.Component {
     this.setState({ property })
   } 
 
-
+  displayApplyForm() {
+    this.setState({ displayForm: true });
+  }
+  
+  renderApplyForm() {
+    if (this.state.displayForm) {
+      return <ApplyForm />;
+    }
+  }
 
   render() {
     return( 
@@ -71,10 +81,9 @@ class PropertyView extends React.Component {
               <h4>{this.state.property.name}</h4>
               <span>{this.state.property.address} {this.state.property.city}</span>
           </div>
-          <div className="button">
-              <Link to={`/property/${this.state.property.id}`}>Apply</Link>
-          </div>
+          <button onClick={() => this.setState({ displayForm: true })}>Apply</button>
           <h6>{this.state.property.id}</h6>
+          {this.renderApplyForm()}
       </div>
     )
   }

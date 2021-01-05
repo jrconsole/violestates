@@ -15,13 +15,27 @@
     margin: 0;
 }
 
-.property .button {
-    position: relative;
-    bottom: 0;
-  }
-  
-.property .button a {
+button {
     font-size: medium;
-    padding: 10px;
+    text-align: center;
+    z-index: 1;
+    display: inline-block;
+}
+  
+button, .button a, #submitProp {
+    background-color: lightcoral;
+    border: 1px solid lightcoral;
+    border-radius: 3px;
+    color: seashell;
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 14px;
+    text-decoration: none;
+}
+  
+button:hover, .button a:hover, #submitProp:hover {
+    background: seashell;
+    border: 1px solid lightcoral;
+    color: lightcoral;
 }
 
