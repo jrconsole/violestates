@@ -1,11 +1,10 @@
 const Pool = require('pg').Pool;
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'violestates',
-    password: 'postgres',
-    port: 5432
-})
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnaithorized: false
+    }
+});
 const connect = () => { return pool; }
 
 function getAllProperties(res) {
