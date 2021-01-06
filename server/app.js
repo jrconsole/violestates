@@ -14,6 +14,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.json()); // Recognize Request Objects as JSON objects
 app.use(express.static('build')); // serve static files (css & js) from the 'public' directory
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname,  "build", "index.html"));
+  });
 
 app.get('/properties', (req, res, next) => {
     db.getAllProperties(res);
