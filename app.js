@@ -15,9 +15,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const path = require('path');
 app.use(express.json()); // Recognize Request Objects as JSON objects
 app.use(express.static('build')); // serve static files (css & js) from the 'public' directory
-app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname,  "build", "index.html"));
-  });
 
 app.get('/properties', (req, res, next) => {
     db.getAllProperties(res);
@@ -31,6 +28,10 @@ app.post('/properties', (req, res, next) => {
     const property = req.body.property;
     db.postProperty(property, res);
 })
+
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname,  "build", "index.html"));
+});
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port: ${PORT}`)
