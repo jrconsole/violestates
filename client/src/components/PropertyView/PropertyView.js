@@ -52,7 +52,7 @@ class PropertyView extends React.Component {
           break;
         }
       }
-      const response  = await fetch(`http://localhost:5000/properties/${id}`);
+      const response  = await fetch(`/properties/${id}`);
       const jsonResponse = await response.json();
 
       property = jsonResponse.property;

@@ -27,14 +27,14 @@ class App extends React.Component {
   }
 
   async refreshProperties() {
-    const response = await fetch('http://localhost:5000/properties');
+    const response = await fetch('/properties');
     const jsonResponse = await response.json();
 
     this.setState({ properties: jsonResponse.properties })
   }
 
   async addProperty(newProp) {
-    const response = await fetch('http://localhost:5000/properties', {
+    const response = await fetch('/properties', {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       headers: {
         'Content-Type': 'application/json'
