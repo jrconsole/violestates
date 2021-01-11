@@ -62,7 +62,8 @@ class App extends React.Component {
                 <Home addProperty={this.addProperty} properties={this.state.properties} />
               </Route>
               <Route path="/properties/:id">
-                <PropertyView properties={this.state.properties} />
+                {/*<PropertyView properties={this.state.properties} />*/}
+                <h1>test deploy</h1>
               </Route>
               <Route path="/properties">
                 <PropertyList properties={this.state.properties} />
