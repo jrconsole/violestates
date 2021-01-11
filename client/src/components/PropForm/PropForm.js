@@ -37,7 +37,7 @@ class PropForm extends React.Component {
         console.log('newId:', newId)
         this.props.closeForm();
         document.getElementById('addPropForm').reset();
-        window.location.href = `/properties/${newId}`;
+        this.props.history.push(`/properties/${newId}`);
     }
 
     render() {
