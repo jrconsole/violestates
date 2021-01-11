@@ -2,7 +2,7 @@
   "name": "violestates",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ui": "rm -rf build && cd ./client && npm run build --prod && cp -r build ../"
