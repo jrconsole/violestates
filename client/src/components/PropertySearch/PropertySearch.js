@@ -2,51 +2,51 @@ import React from 'react';
 import './PropertySearch.css';
 import PropertyList from '../PropertyList/PropertyList';
 
-const properties = [
-  {
-    "id": 1,
-    "price": 500,
-    "num_bed": 1,
-    "num_bath": 1,
-    "name": "My First Apartment",
-    "address": "123 Main St.",
-    "city": "Dayton"
-  },
-  {
-    "id": 2,
-    "price": 1000,
-    "num_bed": 2,
-    "num_bath": 2,
-    "name": "My First Apartment",
-    "address": "123 Main St.",
-    "city": "Columbus"
-  },
-  {
-    "id": 3,
-    "price": 1500,
-    "num_bed": 3,
-    "num_bath": 3,
-    "name": "My First Apartment",
-    "address": "123 Main St.",
-    "city": "Anchorage"
-  },
-  {
-    "id": 4,
-    "price": 2000,
-    "num_bed": 4,
-    "num_bath": 4,
-    "name": "My First Apartment",
-    "address": "123 Main St.",
-    "city": "WrightPat"
-  }
-];
+// const properties = [
+//   {
+//     "id": 1,
+//     "price": 500,
+//     "num_bed": 1,
+//     "num_bath": 1,
+//     "name": "My First Apartment",
+//     "address": "123 Main St.",
+//     "city": "Dayton"
+//   },
+//   {
+//     "id": 2,
+//     "price": 1000,
+//     "num_bed": 2,
+//     "num_bath": 2,
+//     "name": "My First Apartment",
+//     "address": "123 Main St.",
+//     "city": "Columbus"
+//   },
+//   {
+//     "id": 3,
+//     "price": 1500,
+//     "num_bed": 3,
+//     "num_bath": 3,
+//     "name": "My First Apartment",
+//     "address": "123 Main St.",
+//     "city": "Anchorage"
+//   },
+//   {
+//     "id": 4,
+//     "price": 2000,
+//     "num_bed": 4,
+//     "num_bath": 4,
+//     "name": "My First Apartment",
+//     "address": "123 Main St.",
+//     "city": "WrightPat"
+//   }
+// ];
 
 class PropertySearch extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
       allProperties: this.props.properties, 
-      selectedProperties: properties,
+      selectedProperties: this.props.properties,
       filters: {
         numBed: '',
         numBath: '',
@@ -73,7 +73,7 @@ class PropertySearch extends React.Component{
   }
 
   filterProperties(filters) {
-    const allProperties = properties;
+    const allProperties = this.state.allProperties;
     let bedProperties, bathProperties, priceProperties, cityProperties;
     if(filters.numBed) {
       bedProperties = allProperties.filter(property => property.num_bed >= filters.numBed);
