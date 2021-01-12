@@ -1,14 +1,14 @@
 import React from 'react';
-import './ApplyForm.css';
+import './ContactForm.css';
 
-class ApplyForm extends React.Component {
+class ContactForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            application: {
-                applicant: '',
-                income: '',
-                email: ''
+            message: {
+                name: '',
+                email: '',
+                content: ''
             },
             submitted: false
         }
@@ -21,8 +21,8 @@ class ApplyForm extends React.Component {
         const value = e.target.value;
         const name = e.target.name;
         this.setState({ 
-            application: {
-                ...this.state.application, 
+            message: {
+                ...this.state.message, 
                 [name] : value  
             }
         });
@@ -31,48 +31,48 @@ class ApplyForm extends React.Component {
     async handleSubmit(e) {    
         e.preventDefault();
         this.setState({ submitted : true });
-        document.getElementById('applyForm').reset();
+        document.getElementById('contactForm').reset();
     }
 
     renderForm() {
         if (this.state.submitted) {
             return (
                 <>
-                    <h2>Thank you for applying!</h2>
+                    <h2>We'll get back to you ASAP!</h2>
                     <button onClick={this.props.closeForm}>Close</button>
                 </>
             )
         } else {
             return (
                 <>
-                    <h2>Apply for this property</h2>
+                    <h2>Send us a message</h2>
                     
-                    <label htmlFor="applicant">Name:</label>
+                    <label htmlFor="contactNameInput">Name:</label>
                     <input 
                         type="text" 
-                        id="applicant" 
-                        name="applicant"
-                        value={this.state.application.applicant}
+                        id="contactNameInput" 
+                        name="name"
+                        value={this.state.message.name}
                         onChange={this.handleChange}></input>
                     <br></br>
-                    
-                    <label htmlFor="income">Monthly Income:</label>
-                    <input 
-                        type="number" 
-                        id="income" 
-                        name="income"
-                        value={this.state.application.income}
-                        onChange={this.handleChange}></input>
-                    <br></br>
-                    
-                    <label htmlFor="email">email:</label>
+
+                    <label htmlFor="contactEmailInput">email:</label>
                     <input 
                         type="text" 
-                        id="email" 
+                        id="contactEmailInput" 
                         name="email"
-                        value={this.state.application.email}
+                        value={this.state.message.email}
                         onChange={this.handleChange}></input>
-                    <br></br>          
+                    <br></br> 
+                    
+                    <label htmlFor="contactContentInput">Message:</label>
+                    <textarea 
+                        type="number" 
+                        id="contactContentInput" 
+                        name="content"
+                        value={this.state.message.content}
+                        onChange={this.handleChange}></textarea>
+                    <br></br>         
                     
                     <input type="submit" value="Submit" className="button" id="submitProp"></input>
                 </>
@@ -82,8 +82,8 @@ class ApplyForm extends React.Component {
 
     render() {
         return (
-            <div className = {`addProp .applyMenu`} id='applyMenu'>
-                <form id='applyForm' onSubmit={this.handleSubmit}>
+            <div className = {`addProp .contactMenu`} id='contactMenu'>
+                <form id='contactForm' onSubmit={this.handleSubmit}>
                     {this.renderForm()}
                 </form>
                 <div onClick={this.props.closeForm} className='formbox' id='formbox'></div>
@@ -92,4 +92,4 @@ class ApplyForm extends React.Component {
     }
 }
 
-export default ApplyForm;
+export default ContactForm;

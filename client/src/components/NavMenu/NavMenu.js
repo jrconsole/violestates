@@ -9,7 +9,7 @@ export class NavMenu extends React.Component {
             <div id = "navMenu" className = {`menu ${this.props.displayMenu}`}>
                 <ul >
                     <li><Link id="nav1" to="/properties">Properties</Link></li>
-                    <li className="lastNav"><a id="nav2" href="/">Contact</a></li>
+                    <li className="lastNav" onClick={this.props.toggleForm}>Contact</li>
                 </ul>
                 <div id = "menuback" onClick={this.props.onClick} className="menubox"></div>
             </div>

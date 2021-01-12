@@ -20,7 +20,7 @@
     display: flex;
 }
 
-.menu a {
+.menu li, a {
     color:navy;
     z-index: 2;
     font-size: 20px;
@@ -29,9 +29,8 @@
     text-decoration: none;
 }
 
-.menu a:hover {
+.menu li:hover {
     background: rgba(0, 0, 0, 0.2)
-
   }
 
 .menubox {
