@@ -58,7 +58,7 @@ class ApplyForm extends React.Component {
                     
                     <label htmlFor="income">Monthly Income:</label>
                     <input 
-                        type="text" 
+                        type="number" 
                         id="income" 
                         name="income"
                         value={this.state.application.income}

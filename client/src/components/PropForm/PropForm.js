@@ -48,7 +48,7 @@ class PropForm extends React.Component {
                     
                     <label htmlFor="price">Monthly Rent:</label>
                     <input 
-                        type="text" 
+                        type="number" 
                         id="price" 
                         name="price"
                         value={this.state.newProperty.price}
@@ -57,7 +57,7 @@ class PropForm extends React.Component {
                     
                     <label htmlFor="numBed">Number of Bedrooms:</label>
                     <input 
-                        type="text" 
+                        type="number" 
                         id="numBed" 
                         name="numBed"
                         value={this.state.newProperty.numBed}
@@ -66,7 +66,7 @@ class PropForm extends React.Component {
                     
                     <label htmlFor="numBath">Number of Bathrooms:</label>
                     <input 
-                        type="text" 
+                        type="number" 
                         id="numBath" 
                         name="numBath"
                         value={this.state.newProperty.numBath}
