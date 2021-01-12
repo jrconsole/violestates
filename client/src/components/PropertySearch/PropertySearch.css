@@ -1,0 +1,7 @@
+.Portfolio {
+    width: 100%;
+    margin: 5% auto;
+    display: inline-flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}

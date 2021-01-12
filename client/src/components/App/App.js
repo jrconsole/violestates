@@ -6,7 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import './App.css';
-import PropertyList from '../PropertyList/PropertyList';
+import PropertySearch from '../PropertySearch/PropertySearch';
 import PropertyView from '../PropertyView/PropertyView'
 import NavBar from '../NavBar/NavBar';
 import Home from '../Home/Home';
@@ -17,6 +17,7 @@ class App extends React.Component {
     this.state = { 
       properties: [],
       displayForm: '',
+      cities: []
      }
 
     this.addProperty = this.addProperty.bind(this);
@@ -24,6 +25,20 @@ class App extends React.Component {
 
   componentDidMount() {
     this.refreshProperties();
+    this.getCities();
+  }
+
+  async getCities() {
+    const response = await fetch('https://parseapi.back4app.com/classes/Usabystate_OH?limit=1000&order=name&keys=name',
+        {
+            headers: {
+                'X-Parse-Application-Id': '5QgosAvEouEMeZ7PDe4lQhsProbVFYFwreLqdLXb', // This is your app's application id
+                'X-Parse-REST-API-Key': '46IZ68RsuSLYRqvEaNckgxIPXfP3dlfTFEyGVzja', // This is your app's REST API key
+            }
+        }
+    );
+    const jsonResponse = await response.json();
+    this.setState({ cities: jsonResponse.results });
   }
 
   async refreshProperties() {
@@ -65,7 +80,7 @@ class App extends React.Component {
                 <PropertyView properties={this.state.properties} />
               </Route>
               <Route path="/properties">
-                <PropertyList properties={this.state.properties} />
+                <PropertySearch properties={this.state.properties} cities={this.state.cities} />
               </Route>
             </Switch>
           </div>

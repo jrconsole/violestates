@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './PropertyView.css';
 import ImageSlider from '../ImageSlider/ImageSlider';
 import { useParams } from 'react-router-dom';
