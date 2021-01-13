@@ -10,7 +10,7 @@ import PropertySearch from '../PropertySearch/PropertySearch';
 import PropertyView from '../PropertyView/PropertyView'
 import NavBar from '../NavBar/NavBar';
 import Home from '../Home/Home';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,6 +23,7 @@ class App extends React.Component {
 
     this.addProperty = this.addProperty.bind(this);
     this.deleteProperty = this.deleteProperty.bind(this);
+    this.history = this.history.bind(this);
   }
 
   componentDidMount() {
@@ -67,12 +68,16 @@ class App extends React.Component {
     return newId;
   }
 
+  history() {
+    return useHistory();
+  }
+
   async deleteProperty({id}) {
     await fetch(`/properties/${id}`, { method: 'DELETE' });
 
     alert('Property Deleted Successfully');
     this.refreshProperties();
-    this.props.history.push('/');
+    this.history().push('/');
   }
 
   render() {
@@ -103,4 +108,4 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App);
+export default App;

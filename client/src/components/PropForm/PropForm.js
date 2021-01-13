@@ -1,6 +1,6 @@
 import React from 'react';
 import './PropForm.css';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 class PropForm extends React.Component {
     constructor(props) {
@@ -19,6 +19,7 @@ class PropForm extends React.Component {
         
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.history = this.history.bind(this);
     }
 
     handleChange(e) {
@@ -32,13 +33,17 @@ class PropForm extends React.Component {
         });
     }
 
+    history() {
+        return useHistory();
+    }
+
     async handleSubmit(e) {    
         e.preventDefault();
         const newId = await this.props.addProperty(this.state.newProperty);
         console.log('newId:', newId)
         this.props.closeForm();
         document.getElementById('addPropForm').reset();
-        this.props.history.push(`/properties/${newId}`);
+        this.history().push(`/properties/${newId}`);
     }
 
     render() {
@@ -118,4 +123,4 @@ class PropForm extends React.Component {
     }
 }
 
-export default withRouter(PropForm);
+export default PropForm;
