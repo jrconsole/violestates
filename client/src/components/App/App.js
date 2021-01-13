@@ -67,11 +67,16 @@ class App extends React.Component {
   }
 
   async deleteProperty({id}) {
-    const response = await fetch(`/properties/${id}`, { method: 'DELETE' });
+    const response = await fetch(`/properties/${id}`, { 
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      } 
+    });
     const jsonResponse = await response.json();
     console.log(jsonResponse.success);
 
-    alert(jsonResponse.sucess);
+    alert(jsonResponse.success);
     this.refreshProperties();
     this.props.history.push('/');
   }
