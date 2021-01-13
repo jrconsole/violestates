@@ -3,6 +3,7 @@ import './PropertyView.css';
 import ImageSlider from '../ImageSlider/ImageSlider';
 import { useParams } from 'react-router-dom';
 import ApplyForm from '../ApplyForm/ApplyForm';
+import { Redirect } from 'react-router-dom';
 
 const property = {
   images: [
@@ -23,6 +24,7 @@ class PropertyView extends React.Component {
     }
 
     this.displayApplyForm = this.displayApplyForm.bind(this);
+    this.deleteProperty = this.deleteProperty.bind(this);
   }
 
   componentDidMount() {
@@ -74,24 +76,35 @@ class PropertyView extends React.Component {
     }
   }
 
+  async deleteProperty() {
+    await this.props.deleteProp(this.props.params);
+    alert('Property Deleted Successfully');
+    
+    this.setState({redirect: '/'})
+  }
+
   render() {
-    return( 
-      <div id={this.state.property.id} className = "propView">
-          <ImageSlider height={550} images={property.images} />
-          <div className="propInfo">
-              <span>${this.state.property.price}/mo</span>
-              <span>{this.state.property.num_bed}Bed/{this.state.property.num_bath}Bath</span>
-          </div>
-          <div className="propTitle">
-              <h4>{this.state.property.name}</h4>
-              <span>{this.state.property.address} {this.state.property.city}</span>
-          </div>
-          <button onClick={this.displayApplyForm} >Apply</button>
-          <button onClick={() => this.props.deleteProp(this.props.params)} >Delete</button>
-          <h6>{this.state.property.id}</h6>
-          {this.renderApplyForm()}
-      </div>
-    )
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />
+    } else {
+      return( 
+        <div id={this.state.property.id} className = "propView">
+            <ImageSlider height={550} images={property.images} />
+            <div className="propInfo">
+                <span>${this.state.property.price}/mo</span>
+                <span>{this.state.property.num_bed}Bed/{this.state.property.num_bath}Bath</span>
+            </div>
+            <div className="propTitle">
+                <h4>{this.state.property.name}</h4>
+                <span>{this.state.property.address} {this.state.property.city}</span>
+            </div>
+            <button onClick={this.displayApplyForm} >Apply</button>
+            <button onClick={this.deleteProperty} >Delete</button>
+            <h6>{this.state.property.id}</h6>
+            {this.renderApplyForm()}
+        </div>
+      )
+    }
   }
 }
 

@@ -10,7 +10,6 @@ import PropertySearch from '../PropertySearch/PropertySearch';
 import PropertyView from '../PropertyView/PropertyView'
 import NavBar from '../NavBar/NavBar';
 import Home from '../Home/Home';
-import { useHistory } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +17,8 @@ class App extends React.Component {
     this.state = { 
       properties: [],
       displayForm: '',
-      cities: []
+      cities: [],
+      redirect: null
      }
 
     this.addProperty = this.addProperty.bind(this);
@@ -68,16 +68,10 @@ class App extends React.Component {
     return newId;
   }
 
-  history() {
-    return useHistory();
-  }
-
   async deleteProperty({id}) {
     await fetch(`/properties/${id}`, { method: 'DELETE' });
 
-    alert('Property Deleted Successfully');
     this.refreshProperties();
-    this.history().push('/');
   }
 
   render() {

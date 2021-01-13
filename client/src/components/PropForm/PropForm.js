@@ -1,6 +1,6 @@
 import React from 'react';
 import './PropForm.css';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class PropForm extends React.Component {
     constructor(props) {
@@ -13,7 +13,8 @@ class PropForm extends React.Component {
                 numBath: '',
                 name: '',
                 address: '',
-                city: ''
+                city: '',
+                redirect: null
             }
         }
         
@@ -33,93 +34,94 @@ class PropForm extends React.Component {
         });
     }
 
-    history() {
-        return useHistory();
-    }
-
     async handleSubmit(e) {    
         e.preventDefault();
         const newId = await this.props.addProperty(this.state.newProperty);
         console.log('newId:', newId)
         this.props.closeForm();
         document.getElementById('addPropForm').reset();
-        this.history().push(`/properties/${newId}`);
+        
+        this.setState({ redirect: `/properties/${newId}` });
     }
 
     render() {
-        return (
-            <div className = {`addProp ${this.props.displayForm} .addPropMenu`} id='addPropMenu'>
-                <form id='addPropForm' onSubmit={this.handleSubmit}>
-                    <h2>Create a Property</h2>
-                    
-                    <label htmlFor="price">Monthly Rent:</label>
-                    <input 
-                        type="number" 
-                        id="price" 
-                        name="price"
-                        value={this.state.newProperty.price}
-                        onChange={this.handleChange}
-                        required></input>
-                    <br></br>
-                    
-                    <label htmlFor="numBed">Number of Bedrooms:</label>
-                    <input 
-                        type="number" 
-                        id="numBed" 
-                        name="numBed"
-                        value={this.state.newProperty.numBed}
-                        onChange={this.handleChange}
-                        required></input>
-                    <br></br>
-                    
-                    <label htmlFor="numBath">Number of Bathrooms:</label>
-                    <input 
-                        type="number" 
-                        id="numBath" 
-                        name="numBath"
-                        value={this.state.newProperty.numBath}
-                        onChange={this.handleChange}
-                        required></input>
-                    <br></br>
-                    
-                    <label htmlFor="name">Property Name:</label>
-                    <input 
-                        type="text" 
-                        id="name" 
-                        name="name"
-                        value={this.state.newProperty.name}
-                        onChange={this.handleChange}
-                        required></input>
-                    <br></br>
-                    
-                    <label htmlFor="address">Address:</label>
-                    <input 
-                        type="text" 
-                        id="address" 
-                        name="address"
-                        value={this.state.newProperty.address}
-                        onChange={this.handleChange}
-                        required></input>
-                    <br></br>
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        } else {
+            return (
+                <div className = {`addProp ${this.props.displayForm} .addPropMenu`} id='addPropMenu'>
+                    <form id='addPropForm' onSubmit={this.handleSubmit}>
+                        <h2>Create a Property</h2>
+                        
+                        <label htmlFor="price">Monthly Rent:</label>
+                        <input 
+                            type="number" 
+                            id="price" 
+                            name="price"
+                            value={this.state.newProperty.price}
+                            onChange={this.handleChange}
+                            required></input>
+                        <br></br>
+                        
+                        <label htmlFor="numBed">Number of Bedrooms:</label>
+                        <input 
+                            type="number" 
+                            id="numBed" 
+                            name="numBed"
+                            value={this.state.newProperty.numBed}
+                            onChange={this.handleChange}
+                            required></input>
+                        <br></br>
+                        
+                        <label htmlFor="numBath">Number of Bathrooms:</label>
+                        <input 
+                            type="number" 
+                            id="numBath" 
+                            name="numBath"
+                            value={this.state.newProperty.numBath}
+                            onChange={this.handleChange}
+                            required></input>
+                        <br></br>
+                        
+                        <label htmlFor="name">Property Name:</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name"
+                            value={this.state.newProperty.name}
+                            onChange={this.handleChange}
+                            required></input>
+                        <br></br>
+                        
+                        <label htmlFor="address">Address:</label>
+                        <input 
+                            type="text" 
+                            id="address" 
+                            name="address"
+                            value={this.state.newProperty.address}
+                            onChange={this.handleChange}
+                            required></input>
+                        <br></br>
 
-                    <select 
-                        name="city" 
-                        id="citySearch"  
-                        className="filter-select"
-                        defaultValue={'default'}
-                        onChange={this.handleChange}
-                        required>
-                        <option value='default' disabled>Choose City</option>
-                        {this.props.cities.map(city => {
-                            return <option value={city.city_id}>{city.name}</option>
-                        })}
-                    </select>       
-                    
-                    <input type="submit" value="Add Property" className="button" id="submitProp"></input>
-                </form>
-                <div onClick={this.props.closeForm} className='formbox' id='formbox'></div>
-            </div>
-        );
+                        <select 
+                            name="city" 
+                            id="citySearch"  
+                            className="filter-select"
+                            defaultValue={'default'}
+                            onChange={this.handleChange}
+                            required>
+                            <option value='default' disabled>Choose City</option>
+                            {this.props.cities.map(city => {
+                                return <option value={city.city_id}>{city.name}</option>
+                            })}
+                        </select>       
+                        
+                        <input type="submit" value="Add Property" className="button" id="submitProp"></input>
+                    </form>
+                    <div onClick={this.props.closeForm} className='formbox' id='formbox'></div>
+                </div>
+            );
+        }
     }
 }
 
