@@ -29,7 +29,7 @@ app.post('/properties', (req, res, next) => {
     db.postProperty(property, res);
 })
 
-app.delete('/property/:id', (req, res, next) => {
+app.delete('/properties/:id', (req, res, next) => {
     db.deleteProperty(req.params.id, res);
 })
 
