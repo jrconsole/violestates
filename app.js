@@ -29,6 +29,10 @@ app.post('/properties', (req, res, next) => {
     db.postProperty(property, res);
 })
 
+app.delete('/property/:id', (req, res, next) => {
+    db.deleteProperty(req.params.id, res);
+})
+
 app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname,  "build", "index.html"));
 });

@@ -60,6 +60,16 @@ class PropertyView extends React.Component {
     this.setState({ property })
   } 
 
+  async deleteProperty() {
+    const { id } = this.props.params;
+    const response = await fetch(`/properties/${id}`, { method: 'DELETE' });
+    const jsonResponse = await response.json();
+    console.log(jsonResponse);
+
+    alert("Property Deleted Successfully");
+    this.props.history.push('/');
+  }
+
   displayApplyForm() {
     if (!this.state.displayForm) {
       this.setState({ displayForm: true });
@@ -87,6 +97,7 @@ class PropertyView extends React.Component {
               <span>{this.state.property.address} {this.state.property.city}</span>
           </div>
           <button onClick={this.displayApplyForm} >Apply</button>
+          <button onClick={this.deleteProperty} >Delete</button>
           <h6>{this.state.property.id}</h6>
           {this.renderApplyForm()}
       </div>

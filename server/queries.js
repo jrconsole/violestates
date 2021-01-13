@@ -82,63 +82,65 @@ function postProperty(property, res) {
     )
 }
 
-function updateCourse(id, course, res) {
-    pool.query(`
-        UPDATE Courses
-        SET name=$1, 
-            teacher_id=$2, 
-            price=$3,
-            subject_id=$4
-        WHERE id=$5
-        `,[
-            course.name,
-            course.teacherId,
-            course.price,
-            course.subjectId,
-            id
-        ],
-        (err) => {
-            if (err) {
-                throw err;
-            }
-
-            pool.query(`
-                SELECT * from Courses 
-                WHERE id = $1
-                `, [id],
-                (err, result) => {
-                    if (err) {
-                        throw err;
-                    }
-                    
-                    const updatedCourse = result.rows[0];
-                    //send success/fail response based on result of database query
-                    if (updatedCourse) {
-                        res.status(201).send({ course: updatedCourse });
-                    } else {
-                        res.status(500).send('Server error. Could not add update course');
-                    }
-                }
-            )
-        }
-    )
-}
-
-function deleteCourse (id, res) {
-    pool.query(`DELETE FROM Courses WHERE id=$1`, [id], (err) => {
+function deleteProperty (id, res) {
+    pool.query(`DELETE FROM Properties WHERE id=$1`, [id], (err) => {
         if (err) {
             throw err;
         }
 
-        res.status(204).send('Successfully deleted course')
+        res.status(204).send('Successfully deleted property')
     })
 }
+
+// function updateCourse(id, course, res) {
+//     pool.query(`
+//         UPDATE Courses
+//         SET name=$1, 
+//             teacher_id=$2, 
+//             price=$3,
+//             subject_id=$4
+//         WHERE id=$5
+//         `,[
+//             course.name,
+//             course.teacherId,
+//             course.price,
+//             course.subjectId,
+//             id
+//         ],
+//         (err) => {
+//             if (err) {
+//                 throw err;
+//             }
+
+//             pool.query(`
+//                 SELECT * from Courses 
+//                 WHERE id = $1
+//                 `, [id],
+//                 (err, result) => {
+//                     if (err) {
+//                         throw err;
+//                     }
+                    
+//                     const updatedCourse = result.rows[0];
+//                     //send success/fail response based on result of database query
+//                     if (updatedCourse) {
+//                         res.status(201).send({ course: updatedCourse });
+//                     } else {
+//                         res.status(500).send('Server error. Could not add update course');
+//                     }
+//                 }
+//             )
+//         }
+//     )
+// }
+
+
 
 module.exports = { 
     getAllProperties, 
     getProperty, 
     postProperty, 
-    updateCourse, 
-    deleteCourse,
+    //updateCourse, 
+    deleteProperty,
     connect
 }
