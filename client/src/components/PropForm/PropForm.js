@@ -1,5 +1,6 @@
 import React from 'react';
 import './PropForm.css';
+import { withRouter } from 'react-router-dom';
 
 class PropForm extends React.Component {
     constructor(props) {
@@ -117,4 +118,4 @@ class PropForm extends React.Component {
     }
 }
 
-export default PropForm;
+export default withRouter(PropForm);

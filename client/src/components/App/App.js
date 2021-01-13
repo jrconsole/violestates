@@ -10,6 +10,7 @@ import PropertySearch from '../PropertySearch/PropertySearch';
 import PropertyView from '../PropertyView/PropertyView'
 import NavBar from '../NavBar/NavBar';
 import Home from '../Home/Home';
+import { withRouter } from 'react-router-dom';
 
 class App extends React.Component {
   constructor(props) {
@@ -67,9 +68,7 @@ class App extends React.Component {
   }
 
   async deleteProperty({id}) {
-    const response = await fetch(`/properties/${id}`, { method: 'DELETE' });
-    const jsonResponse = await response.json();
-    console.log(jsonResponse.success);
+    await fetch(`/properties/${id}`, { method: 'DELETE' });
 
     alert(jsonResponse.success);
     this.refreshProperties();
@@ -104,4 +103,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
