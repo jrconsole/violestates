@@ -88,7 +88,7 @@ function deleteProperty (id, res) {
             throw err;
         }
 
-        res.status(204).send('Successfully deleted property')
+        res.status(204).send({success: 'Successfully deleted property'})
     })
 }
 
