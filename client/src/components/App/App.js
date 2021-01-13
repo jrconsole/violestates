@@ -70,7 +70,7 @@ class App extends React.Component {
   async deleteProperty({id}) {
     await fetch(`/properties/${id}`, { method: 'DELETE' });
 
-    alert(jsonResponse.success);
+    alert('Property Deleted Successfully');
     this.refreshProperties();
     this.props.history.push('/');
   }
