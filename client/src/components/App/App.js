@@ -21,6 +21,7 @@ class App extends React.Component {
      }
 
     this.addProperty = this.addProperty.bind(this);
+    this.deleteProperty = this.deleteProperty.bind(this);
   }
 
   componentDidMount() {
@@ -65,6 +66,17 @@ class App extends React.Component {
     return newId;
   }
 
+  async deleteProperty() {
+    const { id } = this.props.params;
+    const response = await fetch(`/properties/${id}`, { method: 'DELETE' });
+    const jsonResponse = await response.json();
+    console.log(jsonResponse);
+
+    alert("Property Deleted Successfully");
+    this.refreshProperties();
+    this.props.history.push('/');
+  }
+
   render() {
     return (
       <div>
@@ -77,7 +89,7 @@ class App extends React.Component {
                 <Home addProperty={this.addProperty} properties={this.state.properties} cities={this.state.cities}/>
               </Route>
               <Route path="/properties/:id">
-                <PropertyView properties={this.state.properties} />
+                <PropertyView properties={this.state.properties} deleteProp={this.deleteProperty} />
               </Route>
               <Route path="/properties">
                 <PropertySearch properties={this.state.properties} cities={this.state.cities} />
