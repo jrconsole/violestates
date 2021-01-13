@@ -74,7 +74,7 @@ class App extends React.Component {
 
             <Switch>
               <Route exact path="/">
-                <Home addProperty={this.addProperty} properties={this.state.properties} />
+                <Home addProperty={this.addProperty} properties={this.state.properties} cities={this.state.cities}/>
               </Route>
               <Route path="/properties/:id">
                 <PropertyView properties={this.state.properties} />

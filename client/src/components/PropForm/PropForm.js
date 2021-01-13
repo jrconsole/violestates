@@ -52,7 +52,8 @@ class PropForm extends React.Component {
                         id="price" 
                         name="price"
                         value={this.state.newProperty.price}
-                        onChange={this.handleChange}></input>
+                        onChange={this.handleChange}
+                        required></input>
                     <br></br>
                     
                     <label htmlFor="numBed">Number of Bedrooms:</label>
@@ -61,7 +62,8 @@ class PropForm extends React.Component {
                         id="numBed" 
                         name="numBed"
                         value={this.state.newProperty.numBed}
-                        onChange={this.handleChange}></input>
+                        onChange={this.handleChange}
+                        required></input>
                     <br></br>
                     
                     <label htmlFor="numBath">Number of Bathrooms:</label>
@@ -70,7 +72,8 @@ class PropForm extends React.Component {
                         id="numBath" 
                         name="numBath"
                         value={this.state.newProperty.numBath}
-                        onChange={this.handleChange}></input>
+                        onChange={this.handleChange}
+                        required></input>
                     <br></br>
                     
                     <label htmlFor="name">Property Name:</label>
@@ -79,7 +82,8 @@ class PropForm extends React.Component {
                         id="name" 
                         name="name"
                         value={this.state.newProperty.name}
-                        onChange={this.handleChange}></input>
+                        onChange={this.handleChange}
+                        required></input>
                     <br></br>
                     
                     <label htmlFor="address">Address:</label>
@@ -88,16 +92,22 @@ class PropForm extends React.Component {
                         id="address" 
                         name="address"
                         value={this.state.newProperty.address}
-                        onChange={this.handleChange}></input>
+                        onChange={this.handleChange}
+                        required></input>
                     <br></br>
-                    
-                    <label htmlFor="city">City:</label>
-                    <input 
-                        type="text" 
-                        id="city" 
-                        name="city"
-                        value={this.state.newProperty.city}
-                        onChange={this.handleChange}></input>       
+
+                    <select 
+                        name="city" 
+                        id="citySearch"  
+                        className="filter-select"
+                        defaultValue={'default'}
+                        onChange={this.handleChange}
+                        required>
+                        <option value='default' disabled>Choose City</option>
+                        {this.props.cities.map(city => {
+                            return <option value={city.city_id}>{city.name}</option>
+                        })}
+                    </select>       
                     
                     <input type="submit" value="Add Property" className="button" id="submitProp"></input>
                 </form>
