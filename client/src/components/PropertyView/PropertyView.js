@@ -23,6 +23,7 @@ class PropertyView extends React.Component {
     }
 
     this.displayApplyForm = this.displayApplyForm.bind(this);
+    this.deleteProperty = this.deleteProperty.bind(this);
   }
 
   componentDidMount() {
