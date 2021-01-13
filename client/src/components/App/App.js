@@ -66,8 +66,7 @@ class App extends React.Component {
     return newId;
   }
 
-  async deleteProperty() {
-    const { id } = this.props.params;
+  async deleteProperty({id}) {
     const response = await fetch(`/properties/${id}`, { method: 'DELETE' });
     const jsonResponse = await response.json();
     console.log(jsonResponse);

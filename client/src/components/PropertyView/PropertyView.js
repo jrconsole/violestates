@@ -87,7 +87,7 @@ class PropertyView extends React.Component {
               <span>{this.state.property.address} {this.state.property.city}</span>
           </div>
           <button onClick={this.displayApplyForm} >Apply</button>
-          <button onClick={this.props.deleteProp} >Delete</button>
+          <button onClick={() => this.props.deleteProp(this.props.params)} >Delete</button>
           <h6>{this.state.property.id}</h6>
           {this.renderApplyForm()}
       </div>
