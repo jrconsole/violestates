@@ -53,7 +53,8 @@ class ApplyForm extends React.Component {
                         id="applicant" 
                         name="applicant"
                         value={this.state.application.applicant}
-                        onChange={this.handleChange}></input>
+                        onChange={this.handleChange}
+                        required></input>
                     <br></br>
                     
                     <label htmlFor="income">Monthly Income:</label>
@@ -62,7 +63,8 @@ class ApplyForm extends React.Component {
                         id="income" 
                         name="income"
                         value={this.state.application.income}
-                        onChange={this.handleChange}></input>
+                        onChange={this.handleChange}
+                        required></input>
                     <br></br>
                     
                     <label htmlFor="email">email:</label>
@@ -71,7 +73,8 @@ class ApplyForm extends React.Component {
                         id="email" 
                         name="email"
                         value={this.state.application.email}
-                        onChange={this.handleChange}></input>
+                        onChange={this.handleChange}
+                        required></input>
                     <br></br>          
                     
                     <input type="submit" value="Submit" className="button" id="submitProp"></input>
