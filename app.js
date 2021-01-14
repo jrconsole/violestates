@@ -16,11 +16,11 @@ const path = require('path');
 app.use(express.json()); // Recognize Request Objects as JSON objects
 app.use(express.static('build')); // serve static files (css & js) from the 'public' directory
 
-app.get('/properties', (req, res, next) => {
+app.get('/props', (req, res, next) => {
     db.getAllProperties(res);
 })
 
-app.get('/properties/:id', (req, res, next) => {
+app.get('/props/:id', (req, res, next) => {
     if (!isNaN(req.params.id)) {
         db.getProperty(req.params.id, res);
     } else {
@@ -28,12 +28,12 @@ app.get('/properties/:id', (req, res, next) => {
     }
 })
 
-app.post('/properties', (req, res, next) => {
+app.post('/props', (req, res, next) => {
     const property = req.body.property;
     db.postProperty(property, res);
 })
 
-app.delete('/properties/:id', (req, res, next) => {
+app.delete('/props/:id', (req, res, next) => {
     db.deleteProperty(req.params.id, res);
 })
 

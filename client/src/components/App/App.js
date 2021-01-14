@@ -44,14 +44,14 @@ class App extends React.Component {
   }
 
   async refreshProperties() {
-    const response = await fetch('/properties');
+    const response = await fetch('/props');
     const jsonResponse = await response.json();
 
     this.setState({ properties: jsonResponse.properties })
   }
 
   async addProperty(newProp) {
-    const response = await fetch('/properties', {
+    const response = await fetch('/props', {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       headers: {
         'Content-Type': 'application/json'
@@ -68,7 +68,7 @@ class App extends React.Component {
   }
 
   async deleteProperty({id}) {
-    await fetch(`/properties/${id}`, { method: 'DELETE' });
+    await fetch(`/props/${id}`, { method: 'DELETE' });
 
     this.refreshProperties();
   }
