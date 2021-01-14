@@ -21,7 +21,11 @@ app.get('/properties', (req, res, next) => {
 })
 
 app.get('/properties/:id', (req, res, next) => {
-    db.getProperty(req.params.id, res);
+    if (!isNaN(req.params.id)) {
+        db.getProperty(req.params.id, res);
+    } else {
+        res.status(500).send();
+    }
 })
 
 app.post('/properties', (req, res, next) => {
