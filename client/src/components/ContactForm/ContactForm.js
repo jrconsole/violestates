@@ -44,7 +44,7 @@ class ContactForm extends React.Component {
             )
         } else {
             return (
-                <>
+                <form>
                     <h2>Send us a message</h2>
                     
                     <label htmlFor="contactNameInput">Name:</label>
@@ -75,7 +75,7 @@ class ContactForm extends React.Component {
                     <br></br>         
                     
                     <input type="submit" value="Submit" className="button" id="submitProp"></input>
-                </>
+                </form>
             )
         }
     }
