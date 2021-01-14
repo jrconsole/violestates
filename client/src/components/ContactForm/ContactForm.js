@@ -53,7 +53,8 @@ class ContactForm extends React.Component {
                         id="contactNameInput" 
                         name="name"
                         value={this.state.message.name}
-                        onChange={this.handleChange}></input>
+                        onChange={this.handleChange}
+                        required></input>
                     <br></br>
 
                     <label htmlFor="contactEmailInput">email:</label>
@@ -62,7 +63,8 @@ class ContactForm extends React.Component {
                         id="contactEmailInput" 
                         name="email"
                         value={this.state.message.email}
-                        onChange={this.handleChange}></input>
+                        onChange={this.handleChange}
+                        required></input>
                     <br></br> 
                     
                     <label htmlFor="contactContentInput">Message:</label>
@@ -71,7 +73,8 @@ class ContactForm extends React.Component {
                         id="contactContentInput" 
                         name="content"
                         value={this.state.message.content}
-                        onChange={this.handleChange}></textarea>
+                        onChange={this.handleChange}
+                        required></textarea>
                     <br></br>         
                     
                     <input type="submit" value="Submit" className="button" id="submitProp"></input>
