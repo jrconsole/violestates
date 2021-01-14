@@ -24,7 +24,7 @@ export class NavMenu extends React.Component {
                                 Properties
                         </Link>
                     </li>
-                    <li className="lastNav" onClick={this.props.toggleForm}>Contact</li>
+                    <li className="lastNav" onClick={this.props.toggleForm} style={{"cursor":"pointer"}}>Contact</li>
                 </ul>
                 <div id = "menuback" onClick={this.props.onClick} className="menubox"></div>
             </div>
