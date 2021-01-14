@@ -44,7 +44,7 @@ class ApplyForm extends React.Component {
             )
         } else {
             return (
-                <>
+                <form id='applyForm' onSubmit={this.handleSubmit}>
                     <h2>Apply for this property</h2>
                     
                     <label htmlFor="applicant">Name:</label>
@@ -78,17 +78,15 @@ class ApplyForm extends React.Component {
                     <br></br>          
                     
                     <input type="submit" value="Submit" className="button" id="submitProp"></input>
-                </>
+                </form>
             )
         }
     }
 
     render() {
         return (
-            <div className = {`addProp .applyMenu`} id='applyMenu'>
-                <form id='applyForm' onSubmit={this.handleSubmit}>
-                    {this.renderForm()}
-                </form>
+            <div className = {`addProp .applyMenu`} id='applyMenu'> 
+                {this.renderForm()} 
                 <div onClick={this.props.closeForm} className='formbox' id='formbox'></div>
             </div>
         );
