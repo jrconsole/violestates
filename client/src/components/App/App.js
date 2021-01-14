@@ -23,7 +23,6 @@ class App extends React.Component {
 
     this.addProperty = this.addProperty.bind(this);
     this.deleteProperty = this.deleteProperty.bind(this);
-    this.history = this.history.bind(this);
   }
 
   componentDidMount() {
