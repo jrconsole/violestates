@@ -36,9 +36,11 @@ class PropertyView extends React.Component {
     if (this.props.property) {
       
       property = this.props.property;
+      console.log('props');
     } else if (this.props.params && this.props.properties.length>0) {
     
       const { id } = this.props.params;
+      console.log('params: ', id);
 
     property = this.props.properties.find(property => {
       return property.id === Number(id);
@@ -53,6 +55,7 @@ class PropertyView extends React.Component {
           break;
         }
       }
+      console.log('fetch: ', id);
       const response  = await fetch(`/props/${id}`);
       const jsonResponse = await response.json();
 
