@@ -88,7 +88,7 @@ class PropertyView extends React.Component {
       return <Redirect to={this.state.redirect} />
     } else {
       return( 
-        <div id={this.state.property.id} className = "propView">
+        <div id={this.state.property ? this.state.property.id : null} className = "propView">
             <ImageSlider height={550} images={property.images} />
             <div className="propInfo">
                 <span>${this.state.property.price}/mo</span>
@@ -100,7 +100,7 @@ class PropertyView extends React.Component {
             </div>
             <button onClick={this.displayApplyForm} >Apply</button>
             <button onClick={this.deleteProperty} >Delete</button>
-            <h6>{this.state.property.id}</h6>
+            <h6>{this.state.property ? this.state.property.id : null}</h6>
             {this.renderApplyForm()}
         </div>
       )
