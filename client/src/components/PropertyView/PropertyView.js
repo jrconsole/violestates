@@ -108,7 +108,7 @@ class PropertyView extends React.Component {
             </div>
             <div className="propTitle">
                 <h4>{this.state.property.name}</h4>
-                <span>{this.state.property.address}, {this.state.property.city}</span>
+                <span>{this.state.property.address}, {this.state.property.city} OH</span>
             </div>
             <button onClick={this.displayApplyForm} >Apply</button>
             <button onClick={this.deleteProperty} >Delete</button>
