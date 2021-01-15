@@ -62,7 +62,7 @@ class App extends React.Component {
     const jsonResponse = await response.json();
     const newId = jsonResponse.property.id;
   
-    this.refreshProperties();
+    await this.refreshProperties();
     console.log('jsonreceived:', jsonResponse);
     return newId;
   }
