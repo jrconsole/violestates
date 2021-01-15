@@ -36,15 +36,15 @@ class PropertyView extends React.Component {
     if (this.props.property) {
       
       property = this.props.property;
-      console.log('props');
+
     } else if (this.props.params && this.props.properties.length>0) {
     
       const { id } = this.props.params;
-      console.log('params: ', id);
 
     property = this.props.properties.find(property => {
       return property.id === Number(id);
     });
+    console.log('propfind', property);
     } else {
       
       const url = window.location.href;
@@ -55,7 +55,6 @@ class PropertyView extends React.Component {
           break;
         }
       }
-      console.log('fetch: ', id);
       const response  = await fetch(`/props/${id}`);
       const jsonResponse = await response.json();
 
@@ -63,6 +62,7 @@ class PropertyView extends React.Component {
     }
 
     this.setState({ property })
+    console.log('this ran');
   } 
 
   displayApplyForm() {
@@ -87,6 +87,7 @@ class PropertyView extends React.Component {
   }
 
   render() {
+    console.log(this.state.property ? this.state.property : 'no property');
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
     } else {
