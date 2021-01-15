@@ -40,10 +40,11 @@ class PropertyView extends React.Component {
     } else if (this.props.params && this.props.properties.length>0) {
     
       const { id } = this.props.params;
-
-    property = this.props.properties.find(property => {
+      console.log(this.props.properties);
+    const foundProperty = this.props.properties.find(property => {
       return property.id === Number(id);
     });
+    property = foundProperty ? foundProperty : {id: null};
     console.log('propfind', property);
     } else {
       
@@ -90,6 +91,13 @@ class PropertyView extends React.Component {
     console.log(this.state.property ? this.state.property : 'no property');
     if (this.state.redirect) {
       return <Redirect to={this.state.redirect} />
+    } if (!this.state.property) {
+      return (
+        <>
+          <h1>Sorry!</h1>
+          <h5>Property not found. Please refresh or try again later.</h5>
+        </>
+      )
     } else {
       return( 
         <div id={this.state.property ? this.state.property.id : null} className = "propView">
