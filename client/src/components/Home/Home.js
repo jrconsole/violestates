@@ -7,9 +7,9 @@ import NavBar from '../NavBar/NavBar';
 import PropForm from '../PropForm/PropForm';
 
 const images = [
-  { url: require("../../images/Property1/Image1.jpg") },
   { url: require('../../images/Property2/Image1.jpg') },
-  { url: require('../../images/Property3/Image1.jpg') }
+  { url: require('../../images/Property3/Image1.jpg') },
+  { url: require("../../images/Property1/Image1.jpg") }
 ]; 
 
 class App extends React.Component {
@@ -39,7 +39,7 @@ class App extends React.Component {
           <ImageSlider height={550} images={images}/>
           <div className = "mission">
             <h2>Ohio Homes</h2>
-            <h4>Rent an affordable home in Dayton or Portsmouth</h4>
+            <h4>Rent an affordable home in the nation's most mediocre state.</h4>
           </div>
         </header>
         <div className="button">
